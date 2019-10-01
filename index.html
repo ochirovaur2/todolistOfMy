@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To Do List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="app.min.css">
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+      .topbarOfDaysOfWeek{
+        text-align: center;
+        font-size: 130%;
+
+      }
+
+      ul.colour-picker div {
+        border-radius: 5px;
+        color: white;
+        position: relative;
+        display: block;
+        float: left;
+        height: 200px;
+        width: 25%;
+        text-align: center;
+        overflow-y: scroll;
+        padding-top: 4px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      ul.colour-picker div[data-colour="teal"] {
+        background: #2B9;
+      }
+      ul.colour-picker div[data-colour="green"] {
+        background: #3C7;
+      }
+      ul.colour-picker div[data-colour="yellow"] {
+        background: #EC1;
+      }
+      ul.colour-picker div[data-colour="orange"] {
+        background: #E82;
+      }
+      ul.colour-picker div[data-colour="red"] {
+        background: #E54;
+      }
+      ul.colour-picker div[data-colour="blue"] {
+        background: #39D;
+      }
+      ul.colour-picker div[data-colour="dark-blue"] {
+        background: #345;
+      }
+      ul.colour-picker div[data-colour="white"] {
+        background: #FFF;
+      }
+      
+      
+      
+      #divOfListOfMonday{
+        text-align: left;
+        background-color: inherit;
+        overflow-y: scroll;
+        color: white;
+        
+        border: 1px solid white;
+        border-radius: 5px;
+        margin-left: 1%;
+        width: 95%;
+        height: 150px;
+      }
+      
+
+      .makeWidthWider{
+        position: absolute;
+        visibility: hidden;
+        
+        
+        width: 45px;
+        height:45px;
+        bottom: 5%;
+        right: 5%;
+        text-align: center;
+        font-size: 80px;
+        padding-bottom: 12px;
+        
+        
+
+      }
+      #addTextToMonday{
+        position: absolute;
+        visibility: hidden;
+        text-align: left;
+        height: 60px;
+        width: 300px;
+        bottom: 10%;
+        left: 5%;
+        padding: 0;
+        margin: 0; 
+        border-radius: 0%;
+        overflow: visible;
+
+      }
+      #saveTextOfMonday{
+        box-sizing: border-box;
+        
+        margin: 0;
+        padding: 0;
+         
+        line-height: 30px;
+        font-size: 30px;
+        
+      }
+      #textOfMonday{
+        position: relative;
+        bottom: 5px;
+        margin: 0;
+        padding: 0;
+        line-height: 30px;
+        height: 30px;
+        width: 50%;
+        border-radius:  5px;
+        border: 1px solid white;
+      }
+      .time{
+        position: absolute;
+        visibility: hidden;
+      }
+      #listOfMonday  li {
+        position: relative;
+        text-align: center;
+      }
+      #listOfMonday  li.checked {
+          color: black;
+          text-decoration: line-through;
+      }
+      .close{
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0 40px 0 0;
+      }
+      .line-through1{
+        text-decoration: none;
+      }
+      
+      
+    </style>
+  </head>
+
+  <body>
+    <div class="app-page" data-page="home">
+      <div class="app-topbar">
+        <div class="app-title">To-do list</div>
+      </div>
+      <div class="app-content">
+        
+        <div class="app-section" id="toDoList">
+          <p class="topbarOfDaysOfWeek"><b>  &#8577;ays of week </b><br></p>
+          <ul class="colour-picker">
+            <div data-colour="teal" class="daysOfWeek">
+              Monday
+              
+              <div id="divOfListOfMonday">
+                <ul id="listOfMonday">
+                    <li id="dasd">
+                  
+                      <p class="text"> Drink Coffee</p>
+                      
+
+
+                      <label for="dasd"  class="labelForDeleteElementOfUl time">Delete</label>
+                      
+                    </li>
+
+                 
+                  
+                 
+                  
+                </ul>
+              </div>
+              <div id="addTextToMonday">
+                <span id="saveTextOfMonday" name="textOfMonday" >&#10004;</span>
+                <input id="textOfMonday"type="text" name="textOfMonday" placeholder="Type something..." required>
+                <br>
+                <span>From:</span>
+                  <input type="time" id="timeOfMondayFrom" name="textOfMonday" required> 
+                <span>To: </span>
+                 <input type="time" id="timeOfMondayTo" name="textOfMonday" required>
+                  <label id="deleteAll" >Delete</label>
+                  <button id="target">
+                  Click here
+                   </button>
+                  <span id="HELLO"> </span><span id="flag3"></span>
+                  <p id="Flag1"> </p>
+              </div >
+              <span class="makeWidthWider">&#8417;</span>
+              
+    
+            </div>
+            <div data-colour="green" class="daysOfWeek">Tuesday</div>
+            <div data-colour="yellow" class="daysOfWeek">Wednesday</div>
+            <div data-colour="orange" class="daysOfWeek">Thursday</div>
+            <div data-colour="red" class="daysOfWeek">Friday</div>
+            <div data-colour="blue" class="daysOfWeek">Saturday</div>
+            <div data-colour="dark-blue" id="sunday" class="daysOfWeek">Sunday</div>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  
+
+    <script src="zepto.js"></script>
+    <script src="app.min.js"></script>
+    
+    <script type="text/javascript">
+
+
+
+      
+
+
+   
+    
+
+      // Select the elements
+            var date = '3';
+            function myFunction(){
+            var d = new Date();
+            var n = d.getDay();
+            document.getElementById('HELLO').innerHTML = n;
+            var today = document.getElementById('HELLO').innerHTML;
+            if (today != date) {
+              document.getElementById('Flag1').innerHTML = "another"
+            } else if (today == date){
+              document.getElementById("Flag1").innerHTML = "same";
+              
+                     
+                     
+                 
+            
+          
+
+
+            };
+          };
+          
+      
+      
+      
+       
+
+
+
+      // Classes names
+
+      // add to do function
+      
+      
+      App.controller('home', function (page) {
+
+
+        if($(".makeWidthWider").css("visibility") == "hidden") {
+          $(".PFromTill").animate({
+                position: "absolute",
+                visibility: 'hidden',
+                zIndex: "-3333"}, 
+                300);
+            $(".close").animate({
+                position: "absolute",
+                visibility: 'hidden',
+                zIndex: "-3333"}, 
+                300);
+        }
+
+        
+        $(page).find('#target')
+          .clickable()
+          .on('click', function ()  {
+            
+            
+
+           // var element = document.querySelector( ".line-through1" );
+            
+           // element.classList.toggle('checked');
+            toLocal();
+            
+          });
+
+          
+
+
+
+       
+          
+
+        //get item from local storage
+       
+
+        // check if data is not empty
+       
+
+        // load item's from the user's interface
+
+       
+        //addd item to localStorage
+        var todos;
+        function toLocal() {
+          todos = document.getElementById('listOfMonday').innerHTML;
+          localStorage.setItem("todos", todos);
+        }
+        
+        
+
+       $(page).find('#listOfMonday')
+          .clickable()
+          .on('click', function (ev)  {
+            if(ev.target.tagName === "LI") {
+               
+               ev.target.classList.toggle('checked');
+              
+               toLocal();             
+               
+            } else if(ev.target.tagName === "SPAN") {
+               var div = ev.target.parentNode;
+               div.remove();
+               toLocal();
+            }
+            
+        });
+          
+         
+
+        
+         $(page).find('ul.colour-picker .daysOfWeek')
+          .clickable()
+          .on('click', function () {
+
+              
+               $(this).animate({
+                position: "absolute",
+                left: "50%",
+                transform: "translate(-50%)",
+                zIndex: "2",
+                width: "100%",
+                height: "450px",
+                }, 
+                300);
+               $(".close").animate({
+                position: "absolute",
+                top: "0",
+                right: "0",
+                paddingRight: "40px",
+                visibility: 'visible',
+                zIndex: "auto"
+                }, 
+                300);
+                $(".PFromTill").animate({
+                position: "static",
+                visibility: 'visible',
+                zIndex: "auto"}, 
+                300);
+               $("#divOfListOfMonday").animate({
+                
+                width: "98%",
+                height: "300px",
+                }, 
+                300);
+               $(".makeWidthWider").animate( {
+
+                  visibility:"visible",
+                  transform: "rotate(-45deg)"
+
+               },300);
+               $("#addTextToMonday").
+               animate( {
+
+                  visibility:"visible"
+                  
+
+               },600);
+               $(".time").animate( {
+                  position: "relative",
+                  visibility:"visible",
+                  
+
+               },300);
+
+                
+
+                
+                
+            
+          });
+          /*
+          var i = 0;
+
+          function addToDo(toDo, timeFrom,timeTill, id, trash){
+            if(trash) {return;}
+
+            const ulListOfMonday = document.getElementById("listOfMonday");
+            
+            const item = `
+                <li>
+                  
+                  <p class="text"> ${toDo}</p>
+                  <p> ${timeFrom} to: ${timeTill} </p>
+                  <label id="${i}" class="text">Delete</label>
+                  
+                </li>
+                `;
+            const position = "beforeend";
+
+            ulListOfMonday.insertAdjacentHTML(position, item)
+
+
+          }
+
+          function addOnlyTextOfToDo(toDo, id,trash){ 
+            
+            const ulListOfMonday = document.getElementById("listOfMonday");
+            
+            const item = `
+                <li>
+                  
+                  <p class="text"> ${toDo}</p>
+                  <label id="${i}" job="delete" class="text">Delete</label>                 
+                </li>
+                `;
+            const position = "beforeend";
+            ulListOfMonday.insertAdjacentHTML(position, item)
+
+
+          }
+          */
+          
+          
+          
+
+          $(page).find('#saveTextOfMonday')
+          .clickable()
+          .on('click', function() {
+
+              var li = document.createElement('li');
+              li.className = "line-through1";
+              var inputValue = document.getElementById('textOfMonday').value;
+              var text = document.createTextNode(inputValue);
+              var p = document.createElement('p');
+              var timeFrom = document.getElementById("timeOfMondayFrom").value;
+              var timeTill = document.getElementById("timeOfMondayTo").value;
+              var textFrom = document.createTextNode("From " + timeFrom);
+              var textTill = document.createTextNode(" to " + timeTill);
+              p.className = "PFromTill";
+              li.appendChild(text);
+              p.appendChild(textFrom);
+              p.appendChild(textTill);
+
+              
+              if(inputValue && timeFrom && timeTill) {
+                document.getElementById('listOfMonday').appendChild(li);
+                
+                document.getElementById('textOfMonday').value = "";
+                var spanOfDeleteBtn = document.createElement('SPAN');
+                var textOfDeleteBTN = document.createTextNode("X");
+                document.getElementById("timeOfMondayFrom").value = "";
+                document.getElementById("timeOfMondayTo").value ="" ;
+
+                spanOfDeleteBtn.className = "close";
+                spanOfDeleteBtn.appendChild(textOfDeleteBTN);
+                li.appendChild(spanOfDeleteBtn);
+                li.appendChild(p);
+
+              } else if(inputValue && timeFrom == "" && timeTill =="") {
+                document.getElementById('listOfMonday').appendChild(li);
+                
+                document.getElementById('textOfMonday').value = "";
+                var spanOfDeleteBtn = document.createElement('SPAN');
+                var textOfDeleteBTN = document.createTextNode("X");
+                document.getElementById("timeOfMondayFrom").value = "";
+                document.getElementById("timeOfMondayTo").value ="" ;
+
+                spanOfDeleteBtn.className = "close";
+                spanOfDeleteBtn.appendChild(textOfDeleteBTN);
+                li.appendChild(spanOfDeleteBtn);
+                
+              };
+
+
+              /*
+              const toDo = document.getElementById("textOfMonday").value;
+              const timeFrom = document.getElementById("timeOfMondayFrom").value;
+              const timeTill = document.getElementById("timeOfMondayTo").value;
+              // if the input isn't empty
+              if (toDo && timeFrom && timeTill){
+                addToDo(toDo, timeFrom,timeTill, i);
+              } else if(toDo && timeFrom == "" && timeTill =="") {
+                addOnlyTextOfToDo(toDo);
+              }
+              i++;
+              document.getElementById("textOfMonday").value = "";
+              document.getElementById("timeOfMondayFrom").value = "";
+              document.getElementById("timeOfMondayTo").value = "";
+
+              */
+              toLocal();
+          });
+          //delete all 
+          $(page).find("#deleteAll")
+          .clickable()
+          .on('click', function () {
+            $("#listOfMonday").empty();
+            toLocal();
+          });
+          // add an itme to the list 
+
+            
+           $(page).find('.makeWidthWider')
+          .clickable()
+          .on('click', function () {
+            $(".PFromTill").animate({
+                position: "absolute",
+                visibility: 'hidden',
+                zIndex: "-3333"}, 
+                300);
+            $(".close").animate({
+                position: "absolute",
+                visibility: 'hidden',
+                zIndex: "-3333"}, 
+                300);
+
+
+            $(".daysOfWeek").animate({
+                position: "relative",
+                left: "",
+                transform: "",
+                zIndex: "auto",
+                width: "25%",
+                height: "200px"}, 
+                300);
+            $("#divOfListOfMonday").animate({
+                
+                width: "95%",
+                height: "150px",
+                }, 
+                300);
+            $(".makeWidthWider").animate( {
+                  visibility:"hidden"
+               },300);
+             $(".addText").animate( {
+                  position: "absolute",
+                  visibility:"hidden",
+                  zIndex: "-1111"
+               },300);
+                $(".saveText").animate( {
+                  position: "absolute",
+                  visibility:"hidden",
+                  zIndex: "-1111"
+               },300);
+                $(".toDoText").animate( {
+                  marginTop: "0px",
+                  width: "90%"
+
+               },300);
+                 $("#addTextToMonday").
+               animate( {
+
+                  visibility:"hidden"
+                  
+
+               },50);
+               $(".time").animate( {
+                  position: "absolute",
+                  visibility:"hidden",
+                  
+
+               },300);
+               
+
+            
+
+          });
+          
+          // add text
+          $(page).find('.addText')
+            .clickable()
+            .on('click', function () {
+              $(".toDoText").prop("disabled", false);
+              $(".addText").animate( {
+                 color: "white"
+               },300);
+              $(".saveText").animate( {
+                 color: "black"
+               },300);
+              $(".toDoText").animate( {
+                 border: "1px solid black",
+                 color: "black"
+               },300);
+              
+            });
+            
+            // submit
+            $(page).find('.saveText')
+            .clickable()
+            .on('click', function () {
+              $(".toDoText").prop("disabled", true);
+               $(".saveText").animate( {
+                 color: "white"
+               },300);
+              $(".addText").animate( {
+                 color: "black"
+               },300);
+              $(".toDoText").animate( {
+                 border: "1px solid white",
+                 color: "white"
+               },300);
+              
+            });
+           
+
+       });
+      
+      if(localStorage.getItem("todos")){
+        document.getElementById('listOfMonday').innerHTML = localStorage.getItem("todos");
+        function update(){
+            $(".PFromTill").css({
+                position: "absolute",
+                visibility: 'hidden',
+                zIndex: "-3333"}, 
+                300);
+            $(".close").css({
+                position: "absolute",
+                visibility: 'hidden',
+                zIndex: "-3333"});
+            }
+
+        update();
+      }
+
+
+/*
+        $(page).find('ul.colour-picker li')
+          .clickable()
+          .on('click', function () {
+              if ($(this).css('width') === '50%') {
+               $(this).animate({
+                width: "25%",
+                height: "150px"}, 
+                300)} else {
+                $(this).animate({
+                width: "50%",
+                height: "300px"}, 
+                300)
+               }
+            });
+        });
+       
+     */     
+      
+      App.controller('page2', function (page) {
+        // put stuff here
+      });
+
+      try {
+        App.restore();
+      } catch (err) {
+        App.load('home');
+      }
+    </script>
+  </body>
+</html>
